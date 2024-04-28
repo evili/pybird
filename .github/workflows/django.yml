@@ -9,9 +9,9 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: python:3.9
     strategy:
-      max-parallel: 4
+      max-parallel: 2
       matrix:
         python-version: [3.9]
 
@@ -24,7 +24,8 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pop install poetry
+        poetry install --no-root
     - name: Run Tests
       run: |
         python manage.py test
