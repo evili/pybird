@@ -15,7 +15,7 @@ from pathlib import Path
 from django.contrib.messages import constants as message_constants
 
 
-def ugettext(s): return s
+def gettext(s): return s
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.gis',
-    'haystack',
+    #'haystack',
     'clades',
     'locations',
     'sightings',
@@ -113,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
-  ('ca', ugettext('Catalan')),
-  ('es', ugettext('Spanish')),
-  ('en', ugettext('English')),
+  ('ca', gettext('Catalan')),
+  ('es', gettext('Spanish')),
+  ('en', gettext('English')),
 )
 
 TIME_ZONE = 'UTC'

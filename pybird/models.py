@@ -3,7 +3,6 @@ from django.contrib.gis.db import models
 
 class BaseObject(models.Model):
     version = models.DateTimeField(editable=False, auto_now=True)
-    objects = models.GeoManager()
 
     class Meta:
         abstract = True

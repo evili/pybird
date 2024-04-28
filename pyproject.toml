@@ -5,7 +5,6 @@ description = "Python Photo Bird App"
 authors = ["Evili del Rio <evili.del.rio@gmail.com>"]
 license = "GPL"
 readme = "README.md"
-package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -16,6 +15,7 @@ psycopg2 = "^2.9"
 proj = "^0.2"
 geos = "^0.2"
 geoip = "^1.3"
+pycountry = "^23.12"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.5"

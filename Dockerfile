@@ -11,12 +11,16 @@ WORKDIR /app
 
 RUN . /env/bin/activate && poetry install --no-root
 
+COPY ./entrypoint.sh /env/bin
+
+ENV PATH /env/bin:${PATH}
+
 FROM pybird_builder AS pybird_tester
 
-ENTRYPOINT [ "/env/bin/poetry", "run", "./manage.py", "test" ]
+ENTRYPOINT [ "/env/bin/entrypoint.sh", "poetry", "run", "./manage.py", "test" ]
 
 FROM pybird_builder AS pybird
 
 EXPOSE 8000
 
-ENTRYPOINT [ "/env/bin/gunicorn", "--bind", ":8000", "pybird.wsgi" ]
+ENTRYPOINT [  "/env/bin/entrypoint.sh", "gunicorn", "--bind", ":8000", "pybird.wsgi" ]

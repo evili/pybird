@@ -1,26 +1,13 @@
-from django.shortcuts import render_to_response
-from django.contrib.gis.shortcuts import render_to_kml
-from django.template.context import RequestContext
+from django.views.generic import DetailView, TemplateView
 from photos.models import Photo
-from django.http import Http404
-# from django.utils.translation import ugettext as _
-
-_photos = Photo.objects
 
 
-def detail(request, id=0):
-    try:
-        p = _photos.get(pk=id)
-    except Photo.DoesNotExist:
-        raise Http404
+class PhotosIndex(TemplateView):
+    template_name 'photos/index.html'
 
-    data = {'photo': p}
 
-    return render_to_response(
-        'photos/detail.html',
-        data,
-        context_instance=RequestContext(request)
-        )
+class PhotoDetailView(DetailView):
+    model = Photo
 
 
 def all_kml(request):

@@ -1,10 +1,9 @@
-from django.conf.urls.defaults import patterns, url
+from django.urls import path
 from sightings.views import SightingView, IndexView
 
-urlpatterns = patterns(
-    '',
-    url(r'^$', IndexView.as_view()),
-    url(r'^sighting/(?P<pk>\d+)$',
+urlpatterns = [
+    path('sighting/<int:id>/',
         SightingView.as_view(),
-        name='sighting-detail'),
-)
+        name='sighting_detail'),
+    path('', IndexView.as_view(), name='home'),
+]

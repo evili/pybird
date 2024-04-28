@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from photos.models import Photo
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 def index(request):

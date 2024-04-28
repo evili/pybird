@@ -6,15 +6,15 @@
 from pybird.models import BaseObject, BaseNamed
 from django.db import models
 from django.utils.translation import get_language
-# , ugettext_lazy as _
 from pycountry import languages
 from django.conf import settings
 
-LANG_CHOICES = ()
+LANG_CHOICES = []
 
-for lng in languages.objects:
-    if lng.__dict__.has_key('alpha2'):
-        LANG_CHOICES += (lng.alpha2, lng.name.split(';')[0]),
+for ln in languages:
+    lng = dict(ln)
+    if 'alpha_2' in lng:
+        LANG_CHOICES += (lng['alpha_2'], lng['name'].split(';')[0]),
 
 
 class Kingdom(BaseNamed):
@@ -28,7 +28,7 @@ class Kingdom(BaseNamed):
 class Phylum(BaseNamed):
     """Phylum is a taxonomic rank below kingdom and above class. Traditionally,
     in botany the term division is used instead of phylum"""
-    kingdom = models.ForeignKey(Kingdom)
+    kingdom = models.ForeignKey(Kingdom, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = 'phyla'
@@ -36,7 +36,7 @@ class Phylum(BaseNamed):
 
 class Classe(BaseNamed):
     """Classis is a taxonomic rank fitting between phylum and order."""
-    phylum = models.ForeignKey(Phylum)
+    phylum = models.ForeignKey(Phylum, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name = 'classi'
@@ -45,7 +45,7 @@ class Classe(BaseNamed):
 
 class Order(BaseNamed):
     """Order is a taxonomic rank  fitting between classis and family."""
-    classe = models.ForeignKey(Classe)
+    classe = models.ForeignKey(Classe, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name = 'ordo'
@@ -54,7 +54,7 @@ class Order(BaseNamed):
 
 class Family(BaseNamed):
     """Family is a taxonomic rank fitting between order and genus."""
-    order = models.ForeignKey(Order)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = 'families'
@@ -65,7 +65,7 @@ class Genus(BaseNamed):
     scientific name of a genus may be called the generic name or generic
     epithet: it is always capitalized. It plays a pivotal role in binomial
     nomenclature, the system of biological nomenclature."""
-    family = models.ForeignKey(Family)
+    family = models.ForeignKey(Family, on_delete=models.PROTECT)
 
     class Meta:
         verbose_name_plural = 'genera'
@@ -75,7 +75,7 @@ class Species(BaseNamed):
     """Species s one of the basic units of biological classification and a
     taxonomic rank. A species is often defined as a group of organisms capable
     of interbreeding and producing fertile offspring."""
-    genus = models.ForeignKey(Genus)
+    genus = models.ForeignKey(Genus, on_delete=models.PROTECT)
 
     def sci_name(self):
         return self.genus.name.capitalize() + u' ' + self.name.lower()
@@ -101,7 +101,7 @@ class Species(BaseNamed):
 
 class CommonName(BaseObject):
     cname = models.CharField(max_length=127)
-    species = models.ForeignKey(Species)
+    species = models.ForeignKey(Species, on_delete=models.PROTECT)
     locale = models.CharField(max_length=15, choices=LANG_CHOICES)
 
     def __unicode__(self):
