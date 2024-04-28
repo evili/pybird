@@ -5,14 +5,22 @@ description = "Python Photo Bird App"
 authors = ["Evili del Rio <evili.del.rio@gmail.com>"]
 license = "GPL"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = "^4.2"
+django-haystack = "^3.2"
+django-rosetta = "^0.10"
+psycopg2 = "^2.9"
+proj = "^0.2"
+geos = "^0.2"
+geoip = "^1.3"
 
 [tool.poetry.group.dev.dependencies]
-coverage = "^7.5.0"
-flake8 = "^7.0.0"
+coverage = "^7.5"
+flake8 = "^7.0"
+wheel = "^0.43"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,6 +1,7 @@
-import datetime
+# import datetime
 from haystack import indexes
-from clades.models import Species,CommonName
+from clades.models import Species
+# , CommonName
 
 
 class SpeciesIndex(indexes.SearchIndex, indexes.Indexable):

@@ -1,5 +1,5 @@
 from django.contrib.gis import admin
-from photos.models import *
+from photos.models import Photo, Brand, Camera, Lens, Media, Roll, Author
 
 admin.site.register(Photo, admin.OSMGeoAdmin)
 admin.site.register(Brand)

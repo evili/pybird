@@ -1,6 +1,6 @@
-from pybird.models import BaseObject, BaseNamed
+from pybird.models import BaseNamed
 from django.contrib.gis.db import models
 
-# Create your models here.
+
 class Zone(BaseNamed):
-    area    = models.PolygonField(geography=True)
+    area = models.PolygonField(geography=True)
