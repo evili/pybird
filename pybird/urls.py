@@ -1,10 +1,10 @@
-from django.conf import settings 
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib.gis import admin
 
-admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # Examples:
     # url(r'^$', 'pybird.views.home', name='home'),
     # url(r'^pybird/', include('pybird.foo.urls')),
@@ -23,18 +23,20 @@ urlpatterns = patterns('',
     (r'^$', 'pybird.views.index'),
 )
 
-### rosetta ###
+# rosetta
 if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += patterns('',
-        url(r'^rosetta/', include('rosetta.urls')),
+    urlpatterns += patterns(
+            '',
+            url(r'^rosetta/', include('rosetta.urls')),
     )
 
-#### Media Files in Debug Mode ####
+# Media Files in Debug Mode
 if settings.DEBUG:
     _media_url = settings.MEDIA_URL
 
-    urlpatterns += patterns('',
+    urlpatterns += patterns(
+            '',
             (r'^%s(?P<path>.*)$' % _media_url,
              'django.views.static.serve',
-             {'document_root': settings.MEDIA_ROOT }),
+             {'document_root': settings.MEDIA_ROOT}),
     )

@@ -1,25 +1,28 @@
-# Django settings for pybird project.
 import os
-ugettext = lambda s: s
+from django.contrib.messages import constants as message_constants
+
+
+def ugettext(s): return s
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 # DEBUG_PROPAGATE_EXCEPTIONS = DEBUG
 
 ADMINS = (
-    ('Evili del Rio', 'edelrio@iri.upc.edu'),
+    ('Evili del Rio', 'evili.del.rio@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'pybird',                      # Or path to database file if using sqlite3.
-        'USER': 'edelrio',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'pybird',
+        'USER': 'pybird',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -57,7 +60,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'media/')
+# MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -68,7 +71,7 @@ MEDIA_URL = 'media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+# STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -88,7 +91,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -98,7 +101,6 @@ SECRET_KEY = 'u9(t@)68f$3-d04(o%+n#id9(%9(x-a&amp;50y)p*&amp;#vy)ib%4yk+'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,9 +120,6 @@ ROOT_URLCONF = 'pybird.urls'
 WSGI_APPLICATION = 'pybird.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates'),
 )
 
@@ -144,7 +143,6 @@ INSTALLED_APPS = (
 
 AUTH_PROFILE_MODULE = 'photos.Author'
 
-from django.contrib.messages import constants as message_constants
 MESSAGE_LEVEL = message_constants.DEBUG
 
 # A sample logging configuration. The only tangible logging
