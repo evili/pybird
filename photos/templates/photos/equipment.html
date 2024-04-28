@@ -1,0 +1,6 @@
+{% extends "photos/_base.html" %}
+<!-- photos/equipment.html -->
+{% load i18n %}
+{% block title %}{% trans "Equipment Management" %}{% endblock %}
+{% block local %}{{ block.super }} &gt; <a href="/photots/equipment">{% trans "Equipment" %}</a>{% endblock %}
+{% block main %}{% trans "Equipment  Photo Block" %}{% endblock %}

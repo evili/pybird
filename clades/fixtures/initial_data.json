@@ -1,0 +1,81 @@
+[
+  {
+    "pk": 1, 
+    "model": "clades.kingdom", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "Animals", 
+      "name": "Animalia"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.phylum", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "kingdom": 1, 
+      "notes": "", 
+      "name": "Chordata"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.classe", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "", 
+      "phylum": 1, 
+      "name": "Aves"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.order", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "", 
+      "classe": 1, 
+      "name": "Passeriformes"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.family", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "", 
+      "name": "Paridae", 
+      "order": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.genus", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "Mallarengues", 
+      "name": "Periparus", 
+      "family": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "clades.species", 
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "notes": "Mallarenga petita", 
+      "genus": 1, 
+      "name": "ater"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "clades.commonname",
+    "fields": {
+      "version": "2010-12-16 12:11:00",
+      "cname": "Mallarenga petita",
+      "locale": "ca",
+      "species": "1"
+    }
+  }
+]

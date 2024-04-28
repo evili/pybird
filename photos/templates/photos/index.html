@@ -1,0 +1,33 @@
+{% extends "photos/_base.html" %}
+<!-- photos/index.html -->
+{% load i18n %}
+{% block script %}
+  <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+  <script type="text/javascript" src="http://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+{% endblock%}
+{% block title %}{% trans "Photo Application" %}{% endblock %}
+{% block onload %} onload="init()" {% endblock %}
+{% block detail %}
+<div id="photomap" style="width: 480px; height: 320px; background: #f8f0f0; float: left"></div>
+  <script defer="defer" type="text/javascript">
+        var map, base_layer, kml;
+        function init(){
+            map = new OpenLayers.Map('photomap');
+            base_layer = new OpenLayers.Layer.OSM.Mapnik("OpenStreetMap");
+/*
+new OpenLayers.Layer.WMS(
+	         "OpenLayers WMS",
+	         "http://vmap0.tiles.osgeo.org/wms/vmap0",
+	         {layers: "basic"});
+*/
+            kml = new OpenLayers.Layer.GML("Photos", "/photos/kml/", 
+                                         { format: OpenLayers.Format.KML });
+
+            map.addLayers([base_layer, kml]);
+            window.alert("Map Zoom: "+map.getZoom()+", Levels: "+map.getNumZoomLevels());
+	    map.setCenter(new OpenLayers.LonLat(2, 41));
+            map.zoomTo(4);
+	    window.alert("Map Zoom: "+map.getZoom()+", Levels: "+map.getNumZoomLevels());
+        }
+    </script>
+{% endblock %}

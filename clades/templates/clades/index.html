@@ -1,0 +1,24 @@
+{% extends "clades/_base.html" %}
+<!-- clades/index.html -->
+{% load i18n %}
+{% block title %}{% trans "Cladistic Application" %}{% endblock %}
+{% block onload %} onload="init()" {% endblock %}
+{% block detail %}<div id="photomap">
+<h3>There are {{ species.count }} species registered</h3>
+<table>
+<thead>
+<tr>
+<th>{% trans "Name" %}</th><th>{% trans "Binomial name" %}</th>
+</tr>
+</thead>
+<tbody>
+{% for sp in species %}
+<tr>
+<td>{{ sp }} </td>
+<td><a href="{% url species-detail pk=sp.id %}">{{ sp.sci_name }}</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}

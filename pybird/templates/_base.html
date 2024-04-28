@@ -1,0 +1,13 @@
+{% extends "_layout.html" %}
+<!-- base.html -->
+{% load i18n %}
+{% block title %}PyBird Application{% endblock %}
+{% block header %}<h1>{% trans "PyBird Application" %}</h1>{% endblock %}
+{% block local %}<a href="/">{% trans "Pybird" %}</a>{% endblock %}
+{% block nav %}
+    <ul>{% for i in menu %}
+      <li><a href="{{i.lower}}">{{i}}</a></li>{% empty %}<li>{% trans "In construction" %}</li>
+{% endfor %}
+    </ul>
+{% endblock %}
+{% block footer%}<address>PyBird, &copy; 2010 <a href="mailto:evili.del.rio@gmail.com">Evili del Rio</a></address>{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "_base.html" %}
+<!-- index.html -->
+{% load i18n %}
+{% block main %}<p>{% trans "Main Pybird page" %}</p>{{ block.super}}{% endblock %}
+{% block detail %}<img id="lastShot" valign="top" alt="{{ls.name}}" src="{{ls.image.url}}"/>
+<p id="caption">{{ls.date}}: <a href="photos/detail/{{ls.id}}">{{ls.name}}</a></p>{% endblock %}

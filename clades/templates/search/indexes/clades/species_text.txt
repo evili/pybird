@@ -1,0 +1,28 @@
+{{ object.sci_name }}
+{{ object.notes }}
+
+{% for cn in object.cname_set.all %}
+{{ cn.cname }}
+{% endfor %}
+
+{{ object.genus.name }}
+{{ object.genus.notes }}
+
+{{ object.genus.family.name}}
+{{ object.genus.family.notes}}
+
+
+{{ object.genus.family.order.name }}
+{{ object.genus.family.order.name }}
+
+{{ object.genus.family.order.classe.name }}
+{{ object.genus.family.order.classe.notes }}
+
+{{ object.genus.family.order.classe.phylum.name }}
+{{ object.genus.family.order.classe.phylum.notes }}
+
+{{ object.genus.family.order.classe.phylum.kingdom.name }}
+{{ object.genus.family.order.classe.phylum.kingdom.notes }}
+
+
+

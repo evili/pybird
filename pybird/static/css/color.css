@@ -1,0 +1,43 @@
+body {
+    color: #26324C;
+    background-color: white;
+}
+
+div#header {
+    color: white;
+    background: darkgreen repeat-x scroll 0 0;
+    border: solid #C6DBF4;
+}
+
+div#content {
+    border-right: solid #C6DBF4;
+}
+
+div#nav {
+    /* color: black; */
+    background: lightgreen repeat-x scroll 0 0;
+    border: solid #C6DBF4;
+}
+div#local {
+    color: lightgrey;
+    background: #206420 repeat-x scroll 0 0;
+    border: solid #C6DBF4;
+}
+div#local a {
+    color: lightblue;
+}
+div#local a.visited {
+	color: #DDDD44;
+}
+div#footer {
+    background: #364461 repeat-x scroll 0 0;
+    border-top: solid #495875;
+    color: white;
+    border: solid #C6DBF4;
+}
+div#footer a {
+    color: yellow;
+}
+div#footer a:visited {
+    color: grey;
+}

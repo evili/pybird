@@ -1,0 +1,32 @@
+body {
+    text-align: justify;
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    line-height: 1em;
+}
+
+li {
+    font-size: 90%;
+}
+
+div#header {
+    text-align: center;
+    font-family: serif;
+    
+}
+
+div#nav {
+    font-style: italic;
+}
+
+div#sub {
+    font-size: 90%;
+}
+
+div#local{
+    font-family: monospace;
+}
+
+div#footer {
+    text-decoration: underline;
+    text-align: right;
+}

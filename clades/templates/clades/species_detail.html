@@ -1,0 +1,55 @@
+{% extends "clades/_base.html" %}
+<!-- clades/index.html -->
+{% load i18n %}
+{% block title %}{% trans "Cladistic Application" %}{% endblock %}
+{% block onload %} onload="init()" {% endblock %}
+{% block detail %}<div id="species_detail">
+<h2>{{ species }}</h2>
+<h3>{{ species.sci_name}}</h3>
+<div id="clades">
+<h4>{% trans "Cladistic classification"%}</h4>
+<dl>
+<dt>{% trans "Genus" %}</dt>
+<dd>{{ species.genus }}</dd>
+<dt>{% trans "Family" %}</dt>
+<dd>{{ species.genus.family }}</dd>
+<dt>{% trans "Order" %}</dt>
+<dd>{{ species.genus.family.order }}</dd>
+<dt>{% trans "Classe" %}</dt>
+<dd>{{ species.genus.family.order.classe }}</dd>
+<dt>{% trans "Phylum" %}</dt>
+<dd>{{ species.genus.family.order.classe.phylum }}</dd>
+<dt>{% trans "Kingdom" %}</dt>
+<dd>{{ species.genus.family.order.classe.phylum.kingdom }}</dd>
+</dl>
+{% if species.commonname_set.count > 0 %}
+<div id="common-names">
+<h4>{% trans "Common names" %}</h4>
+<dl>
+{% for c in species.commonname_set.all %}
+{% get_language_info for c.locale as lang %}
+<dt>{{ lang.name_local|capfirst }}</dt>
+<dd>{{ c.cname   }}</dd>
+{% endfor %}
+</dl>
+</div>
+{% endif %}
+</div>
+{% if species.sighting_set.count > 0 %}
+<div id="locations">
+<h4>{% trans "Last seen at:" %}</h4>
+<p>{{ species.sighting_set.latest }}</p>
+</div>
+{% if species.sighting_set.latest.photo %}
+<div id="photos">
+<h4>{% trans "Last shot:" %}</h4>
+<p>{{ species.sighting_set.latest.photo.name }}</p>
+<a href="/photos/detail/{{species.sighting_set.latest.photo.id}}">
+<img src="/{{ species.sighting_set.latest.photo.image.url }}"
+	alt="{{species.sighting_set.latest.photo.name}}"/>
+</a>
+</div>
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}

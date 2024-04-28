@@ -1,0 +1,4 @@
+{% extends "_base.html" %}
+<!-- clades/_base.html -->
+{% load i18n %}
+{% block local %}{{ block.super }} &raquo;  <a href="/clades">{% trans "Cladistic classification" %}</a>{% endblock %}

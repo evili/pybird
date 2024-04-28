@@ -1,0 +1,5 @@
+{{ object.notes }}
+{{ object.species.sci_name }}
+
+{{ object.photo.name }}
+{{ object.author }}

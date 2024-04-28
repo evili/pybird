@@ -1,0 +1,4 @@
+{% extends "_base.html" %}
+<!-- photos/_base.html -->
+{% load i18n %}
+{% block local %}{{ block.super }} &raquo;  <a href="/photos">{% trans "Photos" %}</a>{% endblock %}

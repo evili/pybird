@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "pybird"
+version = "0.1.0"
+description = "Python Photo Bird App"
+authors = ["Evili del Rio <evili.del.rio@gmail.com>"]
+license = "GPL"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "^4.2"
+
+[tool.poetry.group.dev.dependencies]
+coverage = "^7.5.0"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

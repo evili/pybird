@@ -1,0 +1,42 @@
+{% extends "photos/_base.html" %}
+{% block local %}{{ block.super }} &raquo; {{ photo.name }}{% endblock %}
+{% block main %}{{ photo.name }}{{ block.super }}{% endblock%}
+{% block detail%}
+<a href="/admin/photos/photo/{{photo.id}}">
+  <img id="photodetail" valign="top" alt="{{photo.name}}" src="/{{photo.image.url}}"/>
+</a>
+<p id="caption">{{photo.notes}}</p>
+
+<div id="map" style="width: {{photo.image.width}}px; height: {{photo.image.height}}px; background: #f8f0f0;"></div>
+
+{% endblock %}
+
+{% block script%}
+<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+<script type="text/javascript" src="http://openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+<script type="text/javascript">
+var map = new OpenLayers.Map("map");
+
+var ol_wms = new OpenLayers.Layer.OSM.Mapnik("OpenStreetMap (Mapnik)"); 
+
+map.addLayer(ol_wms);
+map.setBaseLayer(ol_wms);
+
+var proj = new OpenLayers.Projection("EPSG:4326");
+var center = new OpenLayers.LonLat({{photo.position.x}}, {{photo.position.y}});
+var mapcenter = center.transform(proj, map.getProjectionObject());
+var mousep = new OpenLayers.Control.MousePosition();
+
+mousep.displayProjection = proj; 
+map.addControl(mousep);
+
+var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+var feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Point(mapcenter.lon, mapcenter.lat));
+vectorLayer.addFeatures(feature);
+map.addLayer(vectorLayer);
+
+map.setCenter(mapcenter, 14);
+
+//window.alert("Map Zoom: "+map.getZoom()+", Levels: "+map.getNumZoomLevels()+", Center: "+map.getCenter());
+</script>
+{% endblock%}

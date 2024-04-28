@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<!-- _layout.html -->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="/static/favicon.png" type="image/x-icon" />
+  <title>{% block title %}{% endblock %}</title>
+  <link href="/static/css/pybird.css" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body{% block onload %}{% endblock %}>
+  <div id="page">
+    <div id="header" class="clearfix">{% block header %}{% endblock %}</div><!-- header -->
+    <div id="content" class="clearfix">
+      <div id="local">{% block local %}{% endblock %}</div><!-- local -->
+      <div id="main">{% block main %}
+	<div id="detail">{% block detail %}{% endblock%}</div><!-- detail -->{% endblock%}
+      </div><!-- main -->
+      <div id="nav">{% block nav %}{% endblock %}</div><!-- nav -->
+    </div><!-- content -->
+    <div id="footer" class="clearfix">{% block footer%}{% endblock %}</div>
+  </div><!-- page -->
+ {% block script %}<script type="text/javascript" src="/static/js/jquery.js"></script>{% endblock %}
+</body>
