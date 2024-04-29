@@ -3,7 +3,7 @@ from photos.models import Photo
 
 
 class PhotosIndex(TemplateView):
-    template_name 'photos/index.html'
+    template_name = 'photos/index.html'
 
 
 class PhotoDetailView(DetailView):

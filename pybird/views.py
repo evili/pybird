@@ -1,17 +1,14 @@
-from django.shortcuts import render_to_response
-from django.template.context import RequestContext
+from django.views.generic import TemplateView
 from photos.models import Photo
 from django.utils.translation import gettext as _
 
 
-def index(request):
-    data = {
-        'menu': [_('Photograpies'), _('Venues'), _('Clades')],
-        'ls': Photo.objects.latest()
-        }
+class IndexView(TemplateView):
+    template_name = 'pybird/index.html'
 
-    return render_to_response(
-        'index.html',
-        data,
-        context_instance=RequestContext(request)
-        )
+    def get_context(self, *args, **kwargs):
+        data = {
+            'menu': [_('Photograpies'), _('Venues'), _('Clades')],
+            'ls': Photo.objects.latest()
+        }
+        super().get_context(self, *args, **kwargs)

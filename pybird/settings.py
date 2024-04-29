@@ -80,12 +80,8 @@ WSGI_APPLICATION = 'pybird.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'pybird',
-        'USER': 'pybird',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

@@ -1,8 +1,7 @@
 from django.urls import path
-from django.views.generic.simple import direct_to_template
-from .views import PhotosIndex, PhotoDetail
+from .views import PhotosIndex, PhotoDetailView
 
 urlpatterns = [
     path('', PhotosIndex.as_view(), name='home'),
-    path('detail/<int:id>/', PhotoDetail.as_view(), name='photo_detail'),
+    path('detail/<int:id>/', PhotoDetailView.as_view(), name='photo_detail'),
 ]
